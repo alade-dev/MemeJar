@@ -1,12 +1,11 @@
-import React from 'react'
-import Home from './pages/Home'
-import Explore from './pages/Explore'
+import React, { useState } from 'react'
 
-const Main = () => {
-  return (
+
+const Main = ({ renderContent }) => {
+
+return (
     <div className='bg-[#00000094] h-full flex flex-col overflow-y-scroll no-scrollbar'>
-        {/* <Home/> */}
-        <Explore/>
+      {renderContent()}
     </div>
   )
 }

@@ -7,11 +7,7 @@ export const AsideBar = [
         icon: home,
         title: "Home",
     },
-    {
-        id: 2,
-        icon: profile,
-        title: "Profile",
-    },
+
     {
         id: 3,
         icon: home,
@@ -22,20 +18,11 @@ export const AsideBar = [
         icon: profile,
         title: "Contest",
     },
-    {
-        id: 5,
-        icon: home,
-        title: "Blog",
-    },
+
     {
         id: 6,
         icon: home,
         title: "Saved",
-    },
-    {
-        id: 7,
-        icon: home,
-        title: "Create Post",
     },
     // Add more course objects as needed
 ];
