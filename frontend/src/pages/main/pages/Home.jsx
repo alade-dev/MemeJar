@@ -6,7 +6,7 @@ import GoogleLogo from "./../../../assets/icons/google.svg";
 function Home() {
   const [balance, setBalance] = useState("0");
   const authService = new AuthService();
-  
+
   useEffect(() => {
     const handleCallback = async () => {
       try {
@@ -36,7 +36,7 @@ function Home() {
       }
     } catch (error) {
       console.log({ error });
-    } 
+    }
   }, [suiService]);
 
   const logout = async () => {
@@ -62,12 +62,12 @@ function Home() {
       <div>
         <h1 className="text-6xl  text-center text-white font-bold ">
           Welcome <br /> to <br />{" "}
-          <span className="text-primary"> MemeJar </span>
+          <span className="text-[#6e243d]"> MemeJar </span>
         </h1>
         <p className="text-sm font-thin text-center text-white italic">
-          ...best Meme Social Media Network
+          Where Memes Meet SocialFi
         </p>
-        <div className="text-center">
+        {/* <div className="text-center">
           {AuthService.isAuthenticated() ? (
             <Create />
           ) : (
@@ -84,7 +84,7 @@ function Home() {
               Sign-in with Google
             </button>
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );

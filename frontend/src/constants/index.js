@@ -6,6 +6,7 @@ export const AsideBar = [
     id: 1,
     icon: home,
     title: "Home",
+    active: true
   },
 
   {

@@ -5,13 +5,13 @@ const Aside = ({ handlePageChange }) => {
   return (
     <div className="bg-primary text-white h-full p-6 relative">
       <div className="leading-none mb-6">
-        <h1 className="font-bold text-center text-3xl text-secondary ">
+        <h1 className="font-bold text-center text-3xl text-secondary">
           {" "}
           MemeJar
         </h1>
         <p className="text-sm font-light text-center text-blue-50">
           {" "}
-          ...the Best Meme Social Media
+          Where Memes Meet SocialFi
         </p>
       </div>
 
@@ -29,7 +29,7 @@ const Aside = ({ handlePageChange }) => {
                 </a>
               </li>
             </ul>
-          );
+        );
         })}
       </div>
 
