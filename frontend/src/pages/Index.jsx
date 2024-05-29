@@ -35,7 +35,7 @@ const Index = () => {
     };
 
     return (
-        <div className='flex bg-bg w-full h-[100vh]'>
+        <div className='flex bg-[#667bf0fd] w-full h-[100vh]'>
             <div className='w-[20%]'>
                 <Aside handlePageChange={handlePageChange} />
             </div>
