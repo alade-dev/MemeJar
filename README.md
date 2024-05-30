@@ -128,4 +128,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
-Thank you for using Memejar! We hope you enjoy creating, sharing, and competing with memes on our platform. For any questions or support, please contact us at support@memejar.com.
+Thank you for using Memejar! We hope you enjoy creating, sharing, and competing with memes on our platform. For any questions or support, please contact us at ibisomimayowa@gmail.com.
