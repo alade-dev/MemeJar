@@ -39,10 +39,10 @@ const Index = () => {
             <div className='w-[20%]'>
                 <Aside handlePageChange={handlePageChange} />
             </div>
-            <div className='w-[50%]'>
+            <div className='w-[60%]'>
                 <Main renderContent={renderContent} />
             </div>
-            <div className='w-[30%]'>
+            <div className='w-[25%]'>
                 <News />
             </div>
 

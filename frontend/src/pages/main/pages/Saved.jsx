@@ -3,7 +3,7 @@ import { memes } from "../../../constants";
 const Saved = () => {
   return (
     <div>
-      <h1 className="text-white text-2xl font-bold text-center my-6 bg-secondary rounded-full px-4 py-2 w-fit m-auto">
+      <h1 className="text-primary text-2xl font-bold text-center my-6 bg-secondary rounded-full px-4 py-2 w-fit m-auto">
         Saved Memes{" "}
       </h1>
       <div className="px-10 py-4">

@@ -1,11 +1,18 @@
+import { Link } from "react-router-dom";
 import { AsideBar } from "../../constants";
 import { FaHome, FaLongArrowAltUp, FaSignOutAlt, FaUser } from "react-icons/fa";
+import { useContext } from "react";
+import UserContext from "../../utils/UserContext";
 
 const Aside = ({ handlePageChange }) => {
+  const { user, setUser } = useContext(UserContext)
+  const handleSignOut = ()=>{
+    setUser(false)
+  }
   return (
     <div className="bg-primary text-white h-full p-6 relative">
       <div className="leading-none mb-6">
-        <h1 className="font-bold text-center text-3xl text-secondary">
+        <h1 className="font-bold text-center text-5xl text-tcolor">
           {" "}
           MemeJar
         </h1>
@@ -29,7 +36,7 @@ const Aside = ({ handlePageChange }) => {
                 </a>
               </li>
             </ul>
-        );
+          );
         })}
       </div>
 
@@ -46,10 +53,15 @@ const Aside = ({ handlePageChange }) => {
           <FaUser /> Profile{" "}
         </button>
 
-        <a href="/login" className="flex items-center">
-          <FaSignOutAlt />
-          <p className="pl-2">Sign out </p>
-        </a>
+        <button onClick={handleSignOut}>
+
+          <Link to='/auth' className="flex items-center">
+
+            <FaSignOutAlt />
+            <p className="pl-2">Sign out </p>
+
+          </Link>
+        </button>
       </div>
     </div>
   );

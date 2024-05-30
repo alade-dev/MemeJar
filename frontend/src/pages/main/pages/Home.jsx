@@ -1,11 +1,15 @@
-import { useCallback, useEffect, useState, useMemo } from "react";
+import { useCallback, useEffect, useState, useMemo, useContext } from "react";
 import { AuthService, SuiService } from "./zkLogin";
 import Create from "./Create";
 import GoogleLogo from "./../../../assets/icons/google.svg";
+import UserContext from "../../../utils/UserContext";
 
 function Home() {
   const [balance, setBalance] = useState("0");
   const authService = new AuthService();
+  // const {setUser} = useContext(UserContext)
+
+  
 
   useEffect(() => {
     const handleCallback = async () => {
@@ -13,6 +17,9 @@ function Home() {
         const params = new URLSearchParams(window.location.hash.substr(1));
         const jwtToken = params.get("id_token");
         console.log("jwtToken", jwtToken);
+        if(jwtToken == null){
+          setUser(false)
+        }
 
         sessionStorage.setItem("sui_jwt_token", jwtToken || "");
       } catch (error) {
@@ -62,7 +69,7 @@ function Home() {
       <div>
         <h1 className="text-6xl  text-center text-white font-bold ">
           Welcome <br /> to <br />{" "}
-          <span className="text-[#6e243d]"> MemeJar </span>
+          <span className="text-tcolor"> MemeJar </span>
         </h1>
         <p className="text-sm font-thin text-center text-white italic">
           Where Memes Meet SocialFi

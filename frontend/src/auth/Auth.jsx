@@ -1,67 +1,38 @@
-import { useCallback, useEffect, useState, useMemo } from "react";
+import { useCallback, useEffect, useState, useMemo, useContext } from "react";
 import { AuthService, SuiService } from "../pages/main/pages/zkLogin";
 import GoogleLogo from "../assets/icons/google.svg";
 import Index from "../pages/Index";
+import UserContext from "../utils/UserContext";
 
 
 const Auth = () => {
-    const [balance, setBalance] = useState("0");
-    const authService = new AuthService();
-    
-    useEffect(() => {
-      const handleCallback = async () => {
-        try {
-          const params = new URLSearchParams(window.location.hash.substr(1));
-          const jwtToken = params.get("id_token");
-          console.log("jwtToken", jwtToken);
+  const {} = useContext(UserContext)
+
+  const authService = new AuthService();
   
-          sessionStorage.setItem("sui_jwt_token", jwtToken || "");
-        } catch (error) {
-          console.error("Error handling callback:", error);
-        }
-      };
-  
-      handleCallback();
-    }, []);
-  
-  
-    let walletAddress;
-    const suiService = useMemo(() => new SuiService(), []);
-  
-    const getBalance = useCallback(async () => {
+
+  useEffect(() => {
+    const handleCallback = async () => {
       try {
-        if (AuthService.isAuthenticated()) {
-          setBalance(
-            await suiService.getFormattedBalance(AuthService.walletAddress())
-          );
-        }
+        const params = new URLSearchParams(window.location.hash.substr(1));
+        const jwtToken = params.get("id_token");
+        console.log("jwtToken", jwtToken);
+        sessionStorage.setItem("sui_jwt_token", jwtToken || "");
+
       } catch (error) {
-        console.log({ error });
-      } 
-    }, [suiService]);
-  
-    const logout = async () => {
-      sessionStorage.clear();
-      window.location.href = "/login";
+        console.error("Error handling callback:", error);
+      }
     };
-  
-    if (AuthService.isAuthenticated()) {
-      walletAddress = AuthService.walletAddress();
-  
-      console.log(walletAddress)
-    }
-  
-    useEffect(() => {
-      getBalance();
-    }, [getBalance]);
-  
-    console.log(balance)
-  
-  
+
+    handleCallback();
+  }, []);
+
+
+
 
 
   return (
-    <div className=" bg-[#080] grid items-center place-content-center h-[100vh]">
+    <div className="bg-primary grid items-center place-content-center h-[100vh]">
       <div>
         <h1 className="text-6xl  text-center text-white font-bold ">
           Welcome <br /> to <br />{" "}
@@ -71,11 +42,14 @@ const Auth = () => {
           Where Memes Meet SocialFi
         </p>
         <div className="text-center">
-          {AuthService.isAuthenticated() ? (
-            <Index/>
-          ) : (
+          {/* {AuthService.isAuthenticated() ? (
+            <>
+              <Index />
+
+            </>
+          ) : ( */}
             <button
-              className="text-white-200 py-4 px-4 my-3 flex items-center mx-auto bg-primary rounded-lg text-xl hover:bg-secondary hover:opacity-70 hover:text-primary "
+              className="text-white-200 py-4 px-4 my-3 flex items-center mx-auto bg-primary rounded-lg text-xl hover:bg-secondary  hover:text-primary border-white border-2"
               onClick={() => authService.login()}
             >
               <img
@@ -86,7 +60,7 @@ const Auth = () => {
               />
               Sign-in with Google
             </button>
-          )}
+          {/* )} */}
         </div>
       </div>
     </div>

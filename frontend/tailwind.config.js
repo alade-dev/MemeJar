@@ -16,7 +16,7 @@ export default {
         // 'bg': "#9abbf1d4",
         'secondary': '#fff',
         'white': '#FFFFFF',
-        'tcolor': '#6e243d',
+        'tcolor': '#667bf0fd',
         'white-200': "rgba(255, 255, 255, 0.8)",
         },
     },

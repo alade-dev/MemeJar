@@ -1,10 +1,13 @@
+import { useContext } from "react"
 import { Outlet, Navigate } from "react-router-dom"
-// import { useAuth } from "./AuthContext"
+import  { UserContext } from "./UserContext"
+import { AuthService } from "../pages/main/pages/zkLogin"
+
 
 const PrivateRoutes = () => { 
-   const user = true;
+ 
   return (
-    user ? <Outlet/> :<Navigate to='/auth'/>
+    AuthService.isAuthenticated  ? <Outlet/> :<Navigate to='/auth'/>
   )
 }
 
