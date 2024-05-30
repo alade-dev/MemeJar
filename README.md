@@ -90,7 +90,7 @@ Participate in weekly meme contests. The top five most liked memes will be rewar
 - **Learning Curve with SUI and Move Programming Language**: As the SUI network and Move programming language were new to the team, we faced a steep learning curve. Through thorough research, studying documentation, watching tutorial videos, and collaborating closely, we overcame these challenges and successfully implemented the project.
 - **Integration Hurdles**: Integrating zkLogin and dWallet required meticulous planning and execution. We resolved various bugs and ensured seamless integration through iterative testing and leveraging community support.
 
-## ## Contributing
+## Contributing
 We welcome contributions from the community! Here are some ways you can help:
 1. **Report Bugs**: If you find any bugs, please open an issue.
 2. **Suggest Features**: Have an idea for a new feature? Let us know by opening an issue.
