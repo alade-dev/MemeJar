@@ -18,7 +18,7 @@ export class MemeJarService {
 
   // create a meme
   async post_meme({ name, url, id, likes }: Meme) {
-    const { sender } = await this.getSuiMessageCall();
+    const { signature, sender } = await this.getSuiMessageCall();
     const txb = new TransactionBlock();
     const txData = {
       target: `${PACKAGE_ID}::memejar::postMeme`,
@@ -30,7 +30,13 @@ export class MemeJarService {
         txb.pure.string(sender),
       ],
     };
-    return this.makeMoveCall(txData, txb);
+    try {
+      await this.makeMoveCall(txData, txb);
+      return { success: true }; // Return success object on successful submission
+    } catch (err) {
+      console.error("Error creating meme post:", err);
+      throw err; // Re-throw the error for handling in the frontend
+    }
   }
   // get all memes
   async get_meme() {
@@ -104,6 +110,6 @@ export class MemeJarService {
     const zkLoginSignature = await AuthService.generateZkLoginSignature(
       userSignature
     );
-    return { signature: zkLoginSignature, sender};
+    return { signature: zkLoginSignature, sender };
   }
 }
