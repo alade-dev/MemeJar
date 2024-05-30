@@ -1,4 +1,4 @@
-#[allow(duplicate_alias,unused_const)]
+#[allow(duplicate_alias)]
 module memejar::memejar {
     
     use sui::url::{Self, Url};

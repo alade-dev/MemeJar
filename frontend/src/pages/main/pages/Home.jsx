@@ -1,11 +1,13 @@
 import { useCallback, useEffect, useState, useMemo } from "react";
-import { AuthService, SuiService } from "./zkLogin";
+import { AuthService, SuiService } from "../../../hooks/zkLogin";
 import Create from "./Create";
 import GoogleLogo from "./../../../assets/icons/google.svg";
 
 function Home() {
   const [balance, setBalance] = useState("0");
   const authService = new AuthService();
+
+  // console.log(authService)
 
   useEffect(() => {
     const handleCallback = async () => {
@@ -22,7 +24,6 @@ function Home() {
 
     handleCallback();
   }, []);
-
 
   let walletAddress;
   const suiService = useMemo(() => new SuiService(), []);
@@ -47,15 +48,14 @@ function Home() {
   if (AuthService.isAuthenticated()) {
     walletAddress = AuthService.walletAddress();
 
-    console.log(walletAddress)
+    console.log(walletAddress);
   }
 
   useEffect(() => {
     getBalance();
   }, [getBalance]);
 
-  console.log(balance)
-
+  console.log(balance);
 
   return (
     <div className="grid items-center place-content-center h-full">
