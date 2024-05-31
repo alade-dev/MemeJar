@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/auth" element={<Auth />} />
 
-        <Route element={<PrivateRoutes/>}>
+        <Route>
           <Route path="/" element={<Index/>} />
         </Route>
       </Routes>
