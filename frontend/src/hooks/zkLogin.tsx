@@ -137,6 +137,7 @@ export class AuthService {
 
   static isAuthenticated() {
     const token = AuthService.jwt();
+    // window.location.href = "/";
     return token && token !== "null";
   }
 
@@ -177,9 +178,14 @@ export class AuthService {
 
       const authUrl = `https://accounts.google.com/o/oauth2/auth?${params.toString()}`;
       window.location.href = authUrl;
+      // window.location.href = "/";
     } catch (error) {
       console.error("Error initiating Google login:", error);
     }
+  }
+  static logout() {
+   sessionStorage.clear();
+    window.location.href = "/auth"; 
   }
 }
 export interface JwtPayload {

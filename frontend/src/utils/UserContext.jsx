@@ -1,6 +1,6 @@
-import React, { createContext } from 'react'
+import { createContext } from 'react'
 import { useCallback, useEffect, useState, useMemo } from "react";
-import { AuthService, SuiService } from "./../pages/main/pages/zkLogin";
+import { AuthService, SuiService } from "./../hooks/zkLogin";
 
 
 export const UserContext = createContext(null);

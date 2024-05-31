@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NFTStorage, File } from "nft.storage";
 import { MemeJarService } from "./../../../hooks/memeJarCall";
 import { v4 as uuidv4 } from 'uuid'; // Import uuid
+import {AuthService} from "../../../hooks/zkLogin";
 
 const Create = () => {
   const [imagePreview, setImagePreview] = useState(null);
@@ -73,14 +74,16 @@ const Create = () => {
       setIsLoading(false);
       return;
     }
+    const sender = AuthService.walletAddress();
 
     try {
       const memeJarService = new MemeJarService();
       const memeData = {
         name: formData.description,
-        url: meta_url,
-        id: uuidv4(), // Generate a unique ID
-        likes: 0,
+        url: "Hello Sui World",
+        // id: uuidv4(), // Generate a unique ID
+        // likes: 1,
+        // poster: sender,
       };
       const result = await memeJarService.post_meme(memeData);
       console.log("Meme posted successfully:", result);
@@ -141,7 +144,7 @@ const Create = () => {
             <img
               src={imagePreview}
               alt="Preview"
-              className="w-1/2 h-auto rounded-md"
+              className="w-1/3 h-auto rounded-md"
             />
             <button
               type="button"

@@ -18,16 +18,16 @@ export class MemeJarService {
 
   // create a meme
   async post_meme({ name, url, id, likes }: Meme) {
-    const { signature, sender } = await this.getSuiMessageCall();
+    // const { signature, sender } = await this.getSuiMessageCall();
     const txb = new TransactionBlock();
     const txData = {
       target: `${PACKAGE_ID}::memejar::postMeme`,
       arguments: [
-        txb.pure(id),
+        // txb.pure(id),
         txb.pure.string(name),
         txb.pure.string(url),
-        txb.pure(likes),
-        txb.pure.string(sender),
+        // txb.pure(likes),
+        // txb.pure.string(sender),
       ],
     };
     try {
@@ -81,7 +81,7 @@ export class MemeJarService {
 
     const { bytes, signature: userSignature } = await txb.sign({
       client: new SuiClient({ url: FULLNODE_URL }),
-      signer: keypair,
+     signer:keypair, 
     });
     coin && txb.transferObjects([coin], sender);
     const zkLoginSignature = await AuthService.generateZkLoginSignature(
@@ -91,7 +91,7 @@ export class MemeJarService {
       url: FULLNODE_URL,
     }).executeTransactionBlock({
       transactionBlock: bytes,
-      signature: zkLoginSignature,
+      signature: userSignature,
     });
 
     console.log("Processing ======", transaction1);
@@ -104,12 +104,15 @@ export class MemeJarService {
     const txb = new TransactionBlock();
     txb.setSender(sender);
     const { bytes, signature: userSignature } = await txb.sign({
-      client: new SuiClient({ url: FULLNODE_URL }),
-      signer: keypair,
+        client: new SuiClient({
+          url: FULLNODE_URL,
+        }),
+        signer: keypair,
     });
-    const zkLoginSignature = await AuthService.generateZkLoginSignature(
-      userSignature
-    );
-    return { signature: zkLoginSignature, sender };
+    const zkLoginSignature = await AuthService.generateZkLoginSignature(userSignature);
+
+    console.log("Generated Signature:", { userSignature, zkLoginSignature, sender });
+
+    return { signature: zkLoginSignature };
   }
 }

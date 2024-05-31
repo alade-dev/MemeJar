@@ -1,20 +1,13 @@
-<<<<<<< HEAD
-import { useCallback, useEffect, useState, useMemo, useContext } from "react";
-import { AuthService, SuiService } from "../pages/main/pages/zkLogin";
-=======
-import { useCallback, useEffect, useState, useMemo } from "react";
-import { AuthService, SuiService } from "../hooks/zkLogin";
->>>>>>> 722a304bd09950c0b684b85e4f594a1b45a75bdf
+// Auth.js
+import {  useEffect } from "react";
+import { AuthService } from "../hooks/zkLogin";
 import GoogleLogo from "../assets/icons/google.svg";
 import Index from "../pages/Index";
-import UserContext from "../utils/UserContext";
+// import { UserContext } from "../utils/UserContext";
 
 const Auth = () => {
-<<<<<<< HEAD
-  const {} = useContext(UserContext)
-
   const authService = new AuthService();
-  
+  // const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
     const handleCallback = async () => {
@@ -22,8 +15,16 @@ const Auth = () => {
         const params = new URLSearchParams(window.location.hash.substr(1));
         const jwtToken = params.get("id_token");
         console.log("jwtToken", jwtToken);
-        sessionStorage.setItem("sui_jwt_token", jwtToken || "");
 
+        if (jwtToken) {
+          sessionStorage.setItem("sui_jwt_token", jwtToken);
+         // Clear the token from the URL
+         const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+         window.history.replaceState({ path: newUrl }, "", newUrl);
+
+         // Navigate to home page after login
+         window.location.href = "/";
+        }
       } catch (error) {
         console.error("Error handling callback:", error);
       }
@@ -33,64 +34,11 @@ const Auth = () => {
   }, []);
 
 
-
-=======
-  const [balance, setBalance] = useState("0");
-  const authService = new AuthService();
->>>>>>> 722a304bd09950c0b684b85e4f594a1b45a75bdf
-
-  useEffect(() => {
-    const handleCallback = async () => {
-      try {
-        const params = new URLSearchParams(window.location.hash.substr(1));
-        const jwtToken = params.get("id_token");
-        console.log("jwtToken", jwtToken);
-
-        sessionStorage.setItem("sui_jwt_token", jwtToken || "");
-      } catch (error) {
-        console.error("Error handling callback:", error);
-      }
-    };
-
-    handleCallback();
-  }, []);
-
-  let walletAddress;
-  const suiService = useMemo(() => new SuiService(), []);
-
-  const getBalance = useCallback(async () => {
-    try {
-      if (AuthService.isAuthenticated()) {
-        setBalance(
-          await suiService.getFormattedBalance(AuthService.walletAddress())
-        );
-      }
-    } catch (error) {
-      console.log({ error });
-    }
-  }, [suiService]);
-
-  const logout = async () => {
-    sessionStorage.clear();
-    window.location.href = "/login";
-  };
-
-  if (AuthService.isAuthenticated()) {
-    walletAddress = AuthService.walletAddress();
-
-    console.log(walletAddress);
-  }
-
-  useEffect(() => {
-    getBalance();
-  }, [getBalance]);
-
-  console.log(balance);
 
   return (
     <div className="bg-primary grid items-center place-content-center h-[100vh]">
       <div>
-        <h1 className="text-6xl  text-center text-white font-bold ">
+        <h1 className="text-6xl text-center text-white font-bold">
           Welcome <br /> to <br />{" "}
           <span className="text-tcolor"> MemeJar </span>
         </h1>
@@ -98,20 +46,11 @@ const Auth = () => {
           Where Memes Meet SocialFi
         </p>
         <div className="text-center">
-<<<<<<< HEAD
-          {/* {AuthService.isAuthenticated() ? (
-            <>
-              <Index />
-
-            </>
-          ) : ( */}
-=======
-          {AuthService.isAuthenticated() ? (
+          {AuthService.isAuthenticated() == true ? (
             <Index />
           ) : (
->>>>>>> 722a304bd09950c0b684b85e4f594a1b45a75bdf
-            <button
-              className="text-white-200 py-4 px-4 my-3 flex items-center mx-auto bg-primary rounded-lg text-xl hover:bg-secondary  hover:text-primary border-white border-2"
+            <div
+              className="text-white-200 cursor-pointer py-4 px-4 my-3 flex items-center mx-auto bg-primary rounded-lg text-xl hover:bg-secondary hover:text-primary border-white border-2"
               onClick={() => authService.login()}
             >
               <img
@@ -121,8 +60,8 @@ const Auth = () => {
                 style={{ marginRight: 10 }}
               />
               Sign-in with Google
-            </button>
-          {/* )} */}
+            </div>
+          )}
         </div>
       </div>
     </div>

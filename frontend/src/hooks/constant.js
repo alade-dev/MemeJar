@@ -1,4 +1,4 @@
-export const FULLNODE_URL = "http://fullnode.alpha.testnet.dwallet.cloud:9000";
+export const FULLNODE_URL = "https://fullnode.devnet.sui.io:443";
 
 export const CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
 

@@ -1,21 +1,22 @@
 import { Link } from "react-router-dom";
 import { AsideBar } from "../../constants";
-import { FaHome, FaLongArrowAltUp, FaSignOutAlt, FaUser } from "react-icons/fa";
-import { useContext } from "react";
-import UserContext from "../../utils/UserContext";
+import { FaSignOutAlt, FaUser } from "react-icons/fa";
+// import { useContext } from "react";
+import { AuthService } from "../../hooks/zkLogin";
 
 const Aside = ({ handlePageChange }) => {
-  const { user, setUser } = useContext(UserContext)
-  const handleSignOut = ()=>{
-    setUser(false)
-  }
+  // const { user, setUser } = useContext(UserContext)
+  // const authService = new AuthService();
+
+  const handleSignOut = () => {
+    AuthService.logout();
+    window.location.reload();
+  };
+
   return (
     <div className="bg-primary text-white h-full p-6 relative">
       <div className="leading-none mb-6">
-        <h1 className="font-bold text-center text-5xl text-tcolor">
-          {" "}
-          MemeJar
-        </h1>
+        <h1 className="font-bold text-center text-5xl text-tcolor"> MemeJar</h1>
         <p className="text-sm font-light text-center text-blue-50">
           {" "}
           Where Memes Meet SocialFi
@@ -54,12 +55,9 @@ const Aside = ({ handlePageChange }) => {
         </button>
 
         <button onClick={handleSignOut}>
-
-          <Link to='/auth' className="flex items-center">
-
+          <Link to="/auth" className="flex items-center">
             <FaSignOutAlt />
             <p className="pl-2">Sign out </p>
-
           </Link>
         </button>
       </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Aside from './asides/Aside'
 import Main from './main/Main'
 import News from './news/News'

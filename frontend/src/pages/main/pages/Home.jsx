@@ -1,17 +1,12 @@
-<<<<<<< HEAD
-import { useCallback, useEffect, useState, useMemo, useContext } from "react";
-import { AuthService, SuiService } from "./zkLogin";
-=======
 import { useCallback, useEffect, useState, useMemo } from "react";
 import { AuthService, SuiService } from "../../../hooks/zkLogin";
->>>>>>> 722a304bd09950c0b684b85e4f594a1b45a75bdf
-import Create from "./Create";
-import GoogleLogo from "./../../../assets/icons/google.svg";
-import UserContext from "../../../utils/UserContext";
+// import Create from "./Create";
+// import GoogleLogo from "./../../../assets/icons/google.svg";
+// import UserContext from "../../../utils/UserContext";
 
 function Home() {
   const [balance, setBalance] = useState("0");
-  const authService = new AuthService();
+  // const authService = new AuthService();
   // const {setUser} = useContext(UserContext)
 
   
@@ -25,7 +20,7 @@ function Home() {
         const jwtToken = params.get("id_token");
         console.log("jwtToken", jwtToken);
         if(jwtToken == null){
-          setUser(false)
+          // setUser(false)
         }
 
         sessionStorage.setItem("sui_jwt_token", jwtToken || "");
