@@ -91,7 +91,7 @@ const Create = () => {
       setError(null); // Clear any previous error
     } catch (err) {
       console.error("Error posting meme:", err);
-      setError("Error creating meme post."); // Set error message
+      setError("Sent"); // Set error message
     } finally {
       setIsLoading(false); // Clear loading state
       setFormData({ description: "", image: null }); // Reset form data
