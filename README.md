@@ -82,9 +82,6 @@ Participate in weekly meme contests. The top five most liked memes will be rewar
 - **Infrastructure Backbone**: Smart contracts underpin the entire Memejar infrastructure, ensuring automated, transparent, and secure execution of agreements. This includes handling subscriptions, payments, content distribution, and royalty splits.
 - **Programmable Transaction Blocks**: Leveraging SUI’s unique programmable transaction blocks, Memejar implements complex financial operations and workflows, making it ideal for DeFi integration and advanced financial management.
 
-### dWallet Integration
-- **Secure Asset Management**: Memejar utilizes dWallet for secure and private asset management. Users can log in using zkLogin dWallet, allowing them to securely own and send various assets, including Bitcoin, across different blockchains.
-- **Interoperability Solutions**: dWallet integration facilitates seamless multi-chain interactions, showcasing its interoperability and enhancing the user experience.
 
 ## Challenges and Overcoming Them
 - **Learning Curve with SUI and Move Programming Language**: As the SUI network and Move programming language were new to the team, we faced a steep learning curve. Through thorough research, studying documentation, watching tutorial videos, and collaborating closely, we overcame these challenges and successfully implemented the project.
